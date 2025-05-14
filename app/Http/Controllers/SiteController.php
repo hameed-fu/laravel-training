@@ -18,8 +18,16 @@ class SiteController extends Controller
         return view('site.service');
     }
 
-    public function save_contact(){
-        return "Form submittion";
+    public function save_contact(Request $request){
+
+        $first_name = $request->get('fname');
+        $last_name = $request->lname;
+
+        return $first_name.' '. $last_name;
+    }
+
+    public function item_details($id, $name){
+        return "ID is: ".$name;
     }
 
 

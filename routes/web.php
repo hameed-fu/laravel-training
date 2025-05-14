@@ -64,3 +64,4 @@ Route::get('home',[SiteController::class,'home']);
 Route::get('about-us',[SiteController::class,'about']);
 Route::match(['post','get'],'services',[SiteController::class,'services']);
 Route::post('save-contact',[SiteController::class,'save_contact'])->name('contact.save');
+Route::get('item/{id}/{name}',[SiteController::class,'item_details']);
