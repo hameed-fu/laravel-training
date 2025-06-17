@@ -68,3 +68,22 @@ Route::get('item/{id}/{name}',[SiteController::class,'item_details']);
 
 Route::post('save-contact',[SiteController::class,'save_contact'])->name('contact.submit');
  
+Route::get('mypage', function(){
+    return view('mypage')->with([
+        'name' => 'Hasan',
+        'age' => 19,
+        'data' => [
+            'email' => 'ali@gmail.com'
+        ],
+        'users' => [
+            ['name' => 'Ali', 'age' => 20],
+            ['name' => 'Hassan', 'age' => 22],
+            ['name' => 'Ahmed', 'age' => 23],
+        ],
+        'countries' => [
+            ['name' => 'Pakistan', 'code' => 'PK'],
+            ['name' => 'India', 'code' => 'IN'],
+            ['name' => 'Bangladesh', 'code' => 'BD'],
+        ]
+    ]);
+});
