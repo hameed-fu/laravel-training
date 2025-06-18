@@ -49,7 +49,7 @@ class SiteController extends Controller
         // return response($name)->header('Content-Type', 'text/plain');;
 
          //dd($name, $email, $message);
-
+         
          return view('contactData',[
             'name' => $data['name'],
             'email' => $data['email'],

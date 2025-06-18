@@ -13,7 +13,7 @@
 
     <button style="background:green;border:1px solid black; padding:8px">Primary Button</button>
      
-    <h1>My page</h1>
+    <h1>My page</h1>fdafds
 
     <h2>Name is: {{ $name }}</h2>
     <h2>Age is: {{ $age }}</h2>
