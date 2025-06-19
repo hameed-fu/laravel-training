@@ -2,9 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
+use Illuminate\Support\Facades\Session;
 
-
- 
 Route::get('/', function () {
     return view('welcome');
 });
@@ -90,6 +89,10 @@ Route::get('mypage', function(){
 
 
 Route::get('/tasks', function () {
+    $email = session()->get('user.email');
+    
+    // session()->forget('user.email');
+    Session::flush();
     return view('tasks', ['tasks' => [
         ['id' => 1, 'title' => 'Task 1', 'completed' => true],
         ['id' => 2, 'title' => 'Task 2', 'completed' => false],
@@ -99,5 +102,21 @@ Route::get('/tasks', function () {
 
 
 Route::get('/projects', function () {
+
+    session()->put('user_name', 'Hasan khan');
+
+    Session::put('user_email','hasan@gmail.com');
+
+    $user = [
+        'name' => 'Hasan Khan',
+        'email' => 'hasan@gmail.com',
+
+    ];
+   session()->put('user', $user);
+
+//    $_SESSION['user'] = $user;
+
+   
+
     return view('projects');
 });
