@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Session;
@@ -120,3 +121,7 @@ Route::get('/projects', function () {
 
     return view('projects');
 });
+
+
+Route::get('form', [FormController::class,'form'])->name('form');
+Route::post('save-form', [FormController::class,'save_form'])->name('form.save');
