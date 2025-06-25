@@ -23,7 +23,7 @@
             </div>
 
         @endif --}}
-        <form method="post" action="{{ route('form.save') }}">
+        <form method="get" action="{{ route('form.save') }}">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
