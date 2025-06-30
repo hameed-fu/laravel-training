@@ -125,3 +125,7 @@ Route::get('/projects', function () {
 
 Route::get('form', [FormController::class,'form'])->name('form');
 Route::post('save-form', [FormController::class,'save_form'])->name('form.save');
+
+
+// query builder
+Route::get('q',[SiteController::class,'query']);
