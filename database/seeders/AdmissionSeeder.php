@@ -27,6 +27,7 @@ class AdmissionSeeder extends Seeder
                 'password' => Hash::make('1234567'), 
                 'phone' => $faker->phoneNumber,
                 'address' => $faker->address,
+                'fee' => rand(100000, 500000),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

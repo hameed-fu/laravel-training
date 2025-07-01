@@ -20,10 +20,11 @@
                 <th>Father Name</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>Fee</th>
                 <th>Address</th>
                 
             </tr>
-            @foreach ($admissions as $key => $admission)
+            @foreach ($maxFeeAdmissions as $key => $admission)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $admission->id }}</td>
@@ -31,6 +32,35 @@
                     <td>{{ $admission->father_name }}</td>
                     <td>{{ $admission->email }}</td>
                     <td>{{ $admission->phone }}</td>
+                    <td>{{ $admission->fee }}</td>
+                    <td>{{ $admission->address }}</td>
+                </tr>
+            @endforeach
+            
+        </table>
+
+        <hr>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Father Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Fee</th>
+                <th>Address</th>
+                
+            </tr>
+            @foreach ($minFeeAdmissions as $key => $admission)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $admission->id }}</td>
+                    <td>{{ $admission->name }}</td>
+                    <td>{{ $admission->father_name }}</td>
+                    <td>{{ $admission->email }}</td>
+                    <td>{{ $admission->phone }}</td>
+                    <td>{{ $admission->fee }}</td>
                     <td>{{ $admission->address }}</td>
                 </tr>
             @endforeach

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('password')->default('1234567');
             $table->string('phone');
             $table->text('address');
+            $table->decimal('fee', 10, 2)->default(0);
             $table->timestamps();
         });
     }

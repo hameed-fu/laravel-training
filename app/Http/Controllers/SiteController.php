@@ -100,9 +100,33 @@ class SiteController extends Controller
         // $a = DB::table('admissions')->where('id', 10)->first();
         $a = DB::table('admissions')->find(11);
         // dd($a);
+        $plucked = DB::table('admissions')->pluck('name');
+        $count = DB::table('admissions')->count();
 
-        $admissions = DB::table('admissions')->get();
-        return view('admissions.index', ['admissions' => $admissions]);
+        $maxFee = DB::table('admissions')->max('fee');
+        $avgFee = DB::table('admissions')->avg('fee');
+
+
+        $maxFeeAdmissions = DB::table('admissions')
+            // ->select('id','name','father_name')
+
+            ->where('fee', '>', 300000)
+            ->distinct() // use select clause to make it distinct
+            ->get();
+
+
+        $minFeeAdmissions = DB::table('admissions')
+            ->where('fee', '<', 300000)
+            ->get();
+
+        $ex = DB::table('admissions')->where('name', 'Betsy Bednar')->exists();
+        $dsntex = DB::table('admissions')->where('name', 'Betsy Bednar')->doesntExist();
+
+        // dd($dsntex);
+
+        return view('admissions.index', compact('maxFeeAdmissions', 'minFeeAdmissions'));
+
+
     }
 
 
