@@ -105,13 +105,15 @@ class SiteController extends Controller
 
         $maxFee = DB::table('admissions')->max('fee');
         $avgFee = DB::table('admissions')->avg('fee');
-
+        $search = request()->search;
 
         $maxFeeAdmissions = DB::table('admissions')
             // ->select('id','name','father_name')
 
             ->where('fee', '>', 300000)
             ->distinct() // use select clause to make it distinct
+            ->whereLike('name', '%' . $search . '%')
+            ->orWhereLike('father_name', '%' . $search . '%')
             ->get();
 
 
@@ -122,7 +124,11 @@ class SiteController extends Controller
         $ex = DB::table('admissions')->where('name', 'Betsy Bednar')->exists();
         $dsntex = DB::table('admissions')->where('name', 'Betsy Bednar')->doesntExist();
 
-        // dd($dsntex);
+
+
+
+        $data = DB::table('admissions')->whereLike('name', '%' . $search . '%')->get();
+
 
         return view('admissions.index', compact('maxFeeAdmissions', 'minFeeAdmissions'));
 

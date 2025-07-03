@@ -128,4 +128,4 @@ Route::post('save-form', [FormController::class,'save_form'])->name('form.save')
 
 
 // query builder
-Route::get('q',[SiteController::class,'query']);
+Route::get('q',[SiteController::class,'query'])->name('query');
