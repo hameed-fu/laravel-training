@@ -129,8 +129,12 @@ class SiteController extends Controller
 
         $data = DB::table('admissions')->whereLike('name', '%' . $search . '%')->get();
 
-
-        return view('admissions.index', compact('maxFeeAdmissions', 'minFeeAdmissions'));
+        $joinedData = DB::table('admissions')
+        ->join('students','students.id','=','admissions.student_id')
+        ->select('admissions.*', 'students.name as student_name')
+        ->paginate(5);
+    
+        return view('admissions.index', compact('maxFeeAdmissions', 'minFeeAdmissions','joinedData'));
 
 
     }

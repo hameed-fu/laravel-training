@@ -23,6 +23,42 @@
             @endif
         </form>
 
+        <hr>
+        <h2>Joined Data</h2>
+          <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Admission Name</th>
+                <th>Student Name</th>
+                <th>Class</th>
+                <th>Father Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Fee</th>
+                <th>Address</th>
+
+            </tr>
+            @foreach ($joinedData as $key => $admission)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $admission->id }}</td>
+                    <td>{{ $admission->name }}</td>
+                    <td>{{ $admission->student_name }}</td>
+                    <td>{{ $admission->class }}</td>
+                    <td>{{ $admission->father_name }}</td>
+                    <td>{{ $admission->email }}</td>
+                    <td>{{ $admission->phone }}</td>
+                    <td>{{ $admission->fee }}</td>
+                    <td>{{ $admission->address }}</td>
+                </tr>
+            @endforeach
+
+        </table>
+
+        {{ $joinedData->links('pagination::bootstrap-5') }}
+        <hr>
+
         <table class="table table-bordered table-hover">
             <tr>
                 <th>#</th>
