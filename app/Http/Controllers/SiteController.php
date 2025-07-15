@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admission;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -130,14 +132,66 @@ class SiteController extends Controller
         $data = DB::table('admissions')->whereLike('name', '%' . $search . '%')->get();
 
         $joinedData = DB::table('admissions')
-        ->join('students','students.id','=','admissions.student_id')
-        ->select('admissions.*', 'students.name as student_name')
-        ->paginate(5);
-    
-        return view('admissions.index', compact('maxFeeAdmissions', 'minFeeAdmissions','joinedData'));
+            ->join('students', 'students.id', '=', 'admissions.student_id')
+            ->select('admissions.*', 'students.name as student_name')
+            ->paginate(5);
+
+        return view('admissions.index', compact('maxFeeAdmissions', 'minFeeAdmissions', 'joinedData'));
 
 
     }
+
+    function ormQuery()
+    {
+        $categories = Category::orderBy('id', 'desc')
+            ->paginate(5); // select * from categories 
+
+
+        
+        // $singRecord = Category::where('id', 4)->first();
+        $singRecord = Category::find(36);
+        // $singRecord->name = 'NEW updated';
+        // $singRecord->save();
+        // dd($singRecord);
+
+
+        // $record = Category::where('id', operator: 36)->update([
+        //      'name' => "OK"
+        // ]);
+
+        Category::destroy([34, 35]);
+        return view('ORM.index', compact('categories'));
+    }
+
+    function storeCategory(Request $request)
+    {
+
+
+        // $category = Category::insert([
+        //     'name' => $request->name
+        // ]);
+
+
+        $category = Category::create([
+            'name' => $request->name
+        ]);
+
+
+        return redirect()->route('ormQuery')->with('success', 'Category Added successfully');
+    }
+
+
+    public function admissions()
+    {
+
+
+        $joinedData = Admission::get();
+       
+        return view('admissions.admissions', compact( 'joinedData'));
+
+
+    }
+
 
 
 

@@ -129,3 +129,9 @@ Route::post('save-form', [FormController::class,'save_form'])->name('form.save')
 
 // query builder
 Route::get('q',[SiteController::class,'query'])->name('query');
+
+// ORM
+Route::get('orm',[SiteController::class,'ormQuery'])->name('ormQuery');
+Route::post('category/save',[SiteController::class,'storeCategory'])->name('categories.store');
+
+Route::get('admissions',[SiteController::class,'admissions'])->name('admissions');
