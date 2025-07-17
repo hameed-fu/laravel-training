@@ -9,9 +9,7 @@ class Admission extends Model
 {
     // protected $table = 'admissions';
 
-    public function student()
-    {
-         
+    public function student(){
         return $this->belongsTo(Student::class);
     }
 

@@ -16,7 +16,8 @@
         <h2 class="mt-3">Admission list</h2>
         <form action="{{ route('query') }}" method="get">
 
-            <input type="text" class="form-control mb-3" name="search" value="{{ request()->get('search') }}" placeholder="Search by name...">
+            <input type="text" class="form-control mb-3" name="search" value="{{ request()->get('search') }}"
+                placeholder="Search by name...">
             <button class="btn btn-primary">Search</button>
             @if (request()->get('search'))
                 <a href="{{ route('query') }}" class="btn btn-warning">clear</a>
@@ -25,7 +26,7 @@
 
         <hr>
         <h2>Joined Data</h2>
-          <table class="table table-bordered table-hover">
+        <table class="table table-bordered table-hover">
             <tr>
                 <th>#</th>
                 <th>ID</th>
@@ -56,8 +57,17 @@
 
         </table>
 
+        @foreach ($posts as $key => $post)
+            <h3>{{ $post->title }}</h3>
+            <ul>
+                @foreach ($post->comments as $key => $comment)
+                    <li>{{ $comment->comment }}</li>
+                @endforeach
+            </ul>
+        @endforeach
+
         {{-- {{ $joinedData->links('pagination::bootstrap-5') }} --}}
-         
+
     </div>
 
 </body>

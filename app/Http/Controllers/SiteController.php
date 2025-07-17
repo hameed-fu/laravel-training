@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Admission;
 use App\Models\Category;
+use App\Models\Post;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -184,10 +186,15 @@ class SiteController extends Controller
     public function admissions()
     {
 
+        // $student = Student::find(1);
+        // $admission = $student->admission;
+         
 
         $joinedData = Admission::get();
-       
-        return view('admissions.admissions', compact( 'joinedData'));
+
+        $posts = Post::with('comments')->get();
+
+        return view('admissions.admissions', compact( 'joinedData','posts'));
 
 
     }
