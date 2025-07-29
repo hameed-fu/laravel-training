@@ -1,18 +1,19 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Session;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('site.home');
 });
 
 
 Route::get("about", function(){
-    return "I am about page";
-});
+    return view('site.about');
+})->name('site.about');
 
 // Route::get('contact', function(){
 //     return "I am contact page";
@@ -135,3 +136,10 @@ Route::get('orm',[SiteController::class,'ormQuery'])->name('ormQuery');
 Route::post('category/save',[SiteController::class,'storeCategory'])->name('categories.store');
 
 Route::get('admissions',[SiteController::class,'admissions'])->name('admissions');
+
+
+Route::prefix('admin')->group(function(){
+    Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+    Route::get('students',[AdminController::class,'students'])->name('students');
+
+});
