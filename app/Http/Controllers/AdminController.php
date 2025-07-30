@@ -31,6 +31,7 @@ class AdminController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
+        // 
         // $imagePath = $request->file('image')->store('products', 'public');
 
         $imagePath = null;
