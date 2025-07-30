@@ -141,5 +141,7 @@ Route::get('admissions',[SiteController::class,'admissions'])->name('admissions'
 Route::prefix('admin')->group(function(){
     Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
     Route::get('students',[AdminController::class,'students'])->name('students');
+    Route::get('products',[AdminController::class,'products'])->name('products');
+    Route::post('products/save',[AdminController::class,'add_product'])->name('products.save');
 
 });
