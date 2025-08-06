@@ -36,7 +36,19 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="{{ route('dashboard') }}">Go to admin</a>
+      @auth
+        @if(Auth::user()->role == 'admin')
+        <a class="btn-getstarted" href="{{ route('admin.dashboard') }}">Go to admin</a>
+        @else
+        <a class="btn-getstarted" href="#}">My profile</a>
+        @endif
+      @endauth
+
+      @guest
+        <a class="btn-getstarted" href="{{ route('login') }}">Login</a>
+        <a class="btn-getstarted" href="{{ route('register') }}">Register</a>
+      @endguest
+      
 
     </div>
   </header>
